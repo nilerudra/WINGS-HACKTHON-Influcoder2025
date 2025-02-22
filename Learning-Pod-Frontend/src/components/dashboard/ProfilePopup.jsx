@@ -12,7 +12,7 @@ function ProfilePopup({ open, onClose, user }) {
   const handleSignOut = () => {
     localStorage.removeItem("accessToken");
 
-    navigate("/");
+    navigate("/login");
   };
 
   return (
