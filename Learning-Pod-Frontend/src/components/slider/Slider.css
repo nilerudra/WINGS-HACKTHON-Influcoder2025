@@ -1,0 +1,36 @@
+/* src/Slider.css */
+.slider {
+  width: 60px;
+  height: 100vh;
+  background-color: #2d3e54;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-top: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.sub-slider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.logo {
+  border-bottom: 1px solid #183d3d;
+}
+.slider-item {
+  color: white;
+  padding: 15px;
+  text-decoration: none;
+  width: 100%;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.slider-item:hover {
+  background-color: #183d3d8a;
+}
+
+.content {
+  margin-left: 20px; /* Adjust based on the width of the slider */
+}

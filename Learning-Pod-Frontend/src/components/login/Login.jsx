@@ -1,20 +1,42 @@
-import { useNavigate } from "react-router-dom";
 import "./Login.css";
+import axios from "axios";
 import React, { useState } from "react";
+import { apiGeneral } from "../../utils/urls";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
 
-    console.log("Login successful:");
-    setLoading(false);
-    navigate("/dashboard");
+    try {
+      const response = await axios.post(apiGeneral.login, {
+        email,
+        password,
+      });
+
+      console.log("Login successful:", response.data);
+
+      // Store access token and user ID in localStorage
+      localStorage.setItem("access_token", response.data.token);
+      localStorage.setItem("user_id", response.data.user_id); // Store user_id in localStorage
+
+      window.location.href = "/dashboard";
+    } catch (error) {
+      console.error("Login failed:", error);
+
+      if (error.response) {
+        console.error("Error response:", error.response.data);
+        alert(`Error: ${error.response.data.message}`);
+      } else {
+        console.error("Error message:", error.message);
+      }
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./SignUp.css";
-
+import { networkRequest } from "../../utils/network_request";
+import { apiGeneral } from "../../utils/urls";
 import { useNavigate } from "react-router-dom";
 
 export default function SignUp() {
@@ -32,9 +33,37 @@ export default function SignUp() {
       setLoading(false);
       return;
     }
-    console.log("Signup successful");
-    setLoading(false);
-    navigate("/dashboard");
+
+    try {
+      // Sending JSON data instead of FormData
+      await networkRequest(
+        apiGeneral.signup,
+        (responseData) => {
+          setLoading(false);
+          console.log("Response:", responseData);
+          alert("User registered successfully");
+          navigate("/");
+        },
+        "post",
+        {
+          first_name: formData.first_name,
+          last_name: formData.last_name,
+          email: formData.email,
+          bday: formData.bday,
+          role: formData.role,
+          password: formData.password,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+    } catch (error) {
+      alert("Sign-up failed. Please try again.");
+      console.error("Sign-up error:", error);
+      setLoading(false);
+    }
   };
 
   return (
