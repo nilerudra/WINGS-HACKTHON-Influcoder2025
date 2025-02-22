@@ -99,14 +99,24 @@ function Dashboard() {
   return (
     <div>
       <div className="dashboard">
-        <div className="menu-bar">
+        <div className="menu-bar" style={{ color: "black" }}>
           <div></div>
           <div className="menu-right">
-            <FaPlus className="menu-item" onClick={handleOpen} />
-            <FaBell className="menu-item" onClick={handlePopupClick} />
+            <FaPlus
+              className="menu-item"
+              style={{ color: "black", fontSize: "40px" }}
+              onClick={handleOpen}
+            />
+
+            <FaBell
+              className="menu-item"
+              style={{ color: "black", fontSize: "40px" }}
+              onClick={handlePopupClick}
+            />
             <FaUser
               className="menu-item"
-              onClick={handleProfileOpen} // Open profile popup
+              style={{ color: "black", fontSize: "40px" }}
+              onClick={handleProfileOpen}
             />
           </div>
         </div>

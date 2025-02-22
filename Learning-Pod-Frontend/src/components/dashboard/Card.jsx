@@ -14,12 +14,7 @@ function Card({ pod }) {
     <div className="card-container">
       <h3>{pod.pod_name}</h3>
       <p className="description">{pod.pod_description}</p>
-      <button
-        style={{ backgroundColor: "#508C9B" }}
-        onClick={() => handleOpen(pod)}
-      >
-        Open
-      </button>
+      <button onClick={() => handleOpen(pod)}>Open</button>
     </div>
   );
 }

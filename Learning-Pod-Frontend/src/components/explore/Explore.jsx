@@ -91,12 +91,7 @@ const Explore = () => {
           <div className="pod-card" key={pod.id}>
             <h3>{pod.pod_name}</h3>
             <p className="description">{pod.pod_description}</p>
-            <button
-              style={{ backgroundColor: "#508C9B" }}
-              onClick={() => handleOpenPopup(pod)}
-            >
-              Join Pod
-            </button>
+            <button onClick={() => handleOpenPopup(pod)}>Join Pod</button>
           </div>
         ))}
       </div>
@@ -122,10 +117,10 @@ const Explore = () => {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClosePopup} color="primary">
+          <Button onClick={handleClosePopup} color="black">
             Cancel
           </Button>
-          <Button onClick={handleSendRequest} color="primary">
+          <Button onClick={handleSendRequest} color="black">
             Request
           </Button>
         </DialogActions>

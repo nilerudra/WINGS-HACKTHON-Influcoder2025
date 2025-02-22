@@ -7,6 +7,7 @@ import ExploreIcon from "@mui/icons-material/Explore";
 import VideoChatIcon from "@mui/icons-material/VideoChat";
 import { Tooltip } from "@mui/material";
 import DrawIcon from "@mui/icons-material/Draw";
+import logo from "./icon.png";
 export const Slider = () => {
   return (
     <>
@@ -14,10 +15,7 @@ export const Slider = () => {
         <div className="sub-slider">
           <div className="slider-item logo">
             <Link to="/dashboard">
-              <img
-                src="https://cdn.prod.website-files.com/634f9136f87e0b031ced1baa/63526fd4dc79f1205e5a6196_Logomark%20(1).svg"
-                alt=""
-              />
+              <img style={{ width: "40px" }} src={logo} alt="" />
             </Link>
           </div>
           <Tooltip title="Home" placement="right">

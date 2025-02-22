@@ -4,6 +4,7 @@
   padding: 20px;
   margin: 20px;
   color: black;
+  border: 2px solid #527853;
   background-color: #fdfdfd; /* Slightly off-white background */
   border-radius: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
@@ -32,11 +33,19 @@
 }
 
 .card-container button {
-  background-color: #508c9b;
+  background-color: #527853;
   color: white;
   border: none;
   padding: 10px 20px;
   font-size: 1em;
   border-radius: 10px;
   cursor: pointer;
+}
+.exbtn {
+  background-color: #527853;
+}
+.exbtn:hover {
+  background: linear-gradient(to right, #ee7214, #f08534);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(238, 114, 20, 0.2);
 }
