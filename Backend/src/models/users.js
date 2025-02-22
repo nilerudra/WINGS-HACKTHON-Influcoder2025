@@ -17,10 +17,11 @@ userSchema.pre("save", async function (next) {
     const salt = await bcrypt.genSalt(10);
     this.password = await bcrypt.hash(this.password, salt);
   }
-  this.updated_at = Date.now();
+  this.updated_at = Date.now(); // Update the timestamp
   next();
 });
 
+// Verify password
 userSchema.methods.comparePassword = function (candidatePassword) {
   return bcrypt.compare(candidatePassword, this.password);
 };

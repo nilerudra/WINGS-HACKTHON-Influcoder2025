@@ -1,7 +1,9 @@
 const mongoose = require("mongoose");
 
 // Your MongoDB URI should include the cluster URL and optional database name
-const mongoDB_URI = "";
+const mongoDB_URI =
+  "mongodb+srv://rudrakshnile930:Nile064@learning-pod.zgr4w.mongodb.net/?retryWrites=true&w=majority&appName=Learning-Pod";
+
 // Connect to MongoDB
 mongoose
   .connect(mongoDB_URI, {
