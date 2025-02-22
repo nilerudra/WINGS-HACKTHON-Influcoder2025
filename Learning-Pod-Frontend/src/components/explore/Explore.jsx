@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import {
   Dialog,
   DialogTitle,
@@ -8,6 +9,7 @@ import {
   TextField,
 } from "@mui/material";
 import "./Explore.css";
+import { domain } from "../../utils/domain";
 
 const Explore = () => {
   const [openPopup, setOpenPopup] = useState(false);
@@ -18,14 +20,10 @@ const Explore = () => {
   useEffect(() => {
     const fetchPods = async () => {
       try {
-        const response = await fetch(
-          "https://hackothsava-server.onrender.com/create/get-pods?is_public=true"
+        const response = await axios.get(
+          `${domain}/create/get-pods?is_public=true`
         );
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const data = await response.json();
-        setPods(data);
+        setPods(response.data);
       } catch (error) {
         console.error("Error fetching pods:", error);
       }
@@ -45,11 +43,44 @@ const Explore = () => {
     setRequestMessage("");
   };
 
-  const handleSendRequest = () => {
-    alert(
-      `Request sent to join "${selectedPod.name}" pod with message: "${requestMessage}"`
+  const handleSendRequest = async () => {
+    if (!selectedPod) return;
+
+    console.log(selectedPod);
+
+    console.log(
+      "userId:",
+      localStorage.getItem("user_id"),
+      "podId:",
+      selectedPod._id,
+      "podAdminId:",
+      selectedPod.created_by,
+      "message:",
+      requestMessage
     );
-    handleClosePopup();
+
+    try {
+      const response = await axios.post(`${domain}/notification/create`, {
+        userId: localStorage.getItem("user_id"),
+        podId: selectedPod._id,
+        podAdminId: selectedPod.created_by,
+        message: requestMessage,
+      });
+
+      alert(
+        `Request sent to join "${selectedPod.pod_name}" pod with message: "${requestMessage}"`
+      );
+
+      handleClosePopup();
+    } catch (error) {
+      console.error(
+        "Error sending request:",
+        error.response?.data || error.message
+      );
+
+      // console.error("Error sending request:", error);
+      alert("Failed to send request. Please try again.");
+    }
   };
 
   return (

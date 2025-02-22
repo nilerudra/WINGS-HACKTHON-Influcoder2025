@@ -61,7 +61,7 @@ router.get("/admin/:podAdminId", async (req, res) => {
   try {
     const { podAdminId } = req.params;
 
-    if (!mongoose.Types.ObjectId.isValid(podAdminId)) {
+    if (!podAdminId || typeof podAdminId !== "string") {
       return res.status(400).json({ message: "Invalid pod admin ID format" });
     }
 
@@ -110,7 +110,7 @@ router.post("/accept-join", async (req, res) => {
     }
 
     if (!pod.members.includes(user._id)) {
-      pod.members.push(user._id);
+      pod.members.push({ user_id: user._id }, { role: user.role });
       await pod.save();
     }
 

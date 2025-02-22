@@ -10,6 +10,7 @@ import axios from "axios";
 import ExCard from "./ExCard";
 import NotificationModal from "./NotificationModal";
 import ProfilePopup from "./ProfilePopup";
+import { domain } from "../../utils/domain";
 
 function Dashboard() {
   const [open, setOpen] = useState(false);
@@ -65,7 +66,7 @@ function Dashboard() {
     const fetchPods = async () => {
       try {
         const response = await fetch(
-          "https://hackothsava-server.onrender.com/create/get-pods?is_public=true"
+          `${domain}/create/get-pods?is_public=true`
         );
         if (!response.ok) {
           throw new Error("Network response was not ok");

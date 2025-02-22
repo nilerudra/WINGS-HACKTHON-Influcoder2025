@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 import FolderOpenIcon from "@mui/icons-material/FolderOpen";
 import PlaylistAddCheckIcon from "@mui/icons-material/PlaylistAddCheck";
 import PublishIcon from "@mui/icons-material/Publish";
+import axios from "axios";
+import { domain } from "../../utils/domain";
 
 // Establish socket connection
 const socket = io("https://hackothsava-server.onrender.com");
@@ -15,11 +17,10 @@ export default function ChatContainer({ pod, isOpen }) {
   const [chatInput, setChatInput] = useState("");
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [chatMessages, setChatMessages] = useState([]);
-  const [currentPod, setCurrentPod] = useState(null); // State to store pod data
+  const [currentPod, setCurrentPod] = useState(null);
   const userId = localStorage.getItem("user_id");
   const messagesEndRef = useRef(null);
-  const navigate = useNavigate(); // Use the navigate hook
-  const navigate2 = useNavigate(); // Use the navigate hook
+  const navigate = useNavigate();
 
   const scrollToBottom = () => {
     if (messagesEndRef.current) {
@@ -35,8 +36,21 @@ export default function ChatContainer({ pod, isOpen }) {
     setIsProfileOpen(!isProfileOpen);
   };
 
-  const handleSubmission = () => {
-    navigate2("/submission");
+  const handleSubmission = async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:8000/tasks/pods/${pod._id}/check-admin/${userId}`
+      );
+      if (response.data.isAdmin) {
+        alert("task");
+        navigate("/task-creation");
+      } else {
+        alert("submission");
+        navigate("/submission");
+      }
+    } catch (error) {
+      console.error("Error checking admin status:", error);
+    }
   };
 
   const handleResource = () => {
@@ -54,6 +68,7 @@ export default function ChatContainer({ pod, isOpen }) {
       fetch(`${apiGeneral.pods}${pod._id}`)
         .then((response) => response.json())
         .then((data) => {
+          console.log("current pod", data);
           setCurrentPod(data);
         })
         .catch((error) => {
