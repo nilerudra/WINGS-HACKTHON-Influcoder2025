@@ -8,13 +8,11 @@ router.post("/", async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    // Check if the user exists
     const user = await User.findOne({ email });
     if (!user) {
       return res.status(400).json({ message: "Invalid email or password" });
     }
 
-    // Compare the password
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       return res.status(400).json({ message: "Invalid email or password" });
@@ -23,14 +21,13 @@ router.post("/", async (req, res) => {
     // Generate JWT
     const token = jwt.sign(
       { userId: user._id, role: user.role },
-      "your_jwt_secret", // Use a secure key in production
+      "your_jwt_secret",
       { expiresIn: "1h" }
     );
 
-    // Return both token and user_id in the response
     res.json({
-      token, // The generated JWT token
-      user_id: user._id, // Include the user_id
+      token,
+      user_id: user._id,
       message: "Login successful",
     });
   } catch (err) {
