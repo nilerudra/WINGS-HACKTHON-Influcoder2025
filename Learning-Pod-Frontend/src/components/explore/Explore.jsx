@@ -19,7 +19,7 @@ const Explore = () => {
     const fetchPods = async () => {
       try {
         const response = await fetch(
-          "https://hackothsava-server.onrender.com/create/get-pods?is_public=true"
+          "http://localhost:8000/create/get-pods?is_public=true"
         );
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -60,12 +60,7 @@ const Explore = () => {
           <div className="pod-card" key={pod.id}>
             <h3>{pod.pod_name}</h3>
             <p className="description">{pod.pod_description}</p>
-            <button
-              style={{ backgroundColor: "#508C9B" }}
-              onClick={() => handleOpenPopup(pod)}
-            >
-              Join Pod
-            </button>
+            <button onClick={() => handleOpenPopup(pod)}>Join Pod</button>
           </div>
         ))}
       </div>
@@ -91,10 +86,10 @@ const Explore = () => {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClosePopup} color="primary">
+          <Button onClick={handleClosePopup} color="black">
             Cancel
           </Button>
-          <Button onClick={handleSendRequest} color="primary">
+          <Button onClick={handleSendRequest} color="black">
             Request
           </Button>
         </DialogActions>

@@ -65,7 +65,7 @@ function Dashboard() {
     const fetchPods = async () => {
       try {
         const response = await fetch(
-          "https://hackothsava-server.onrender.com/create/get-pods?is_public=true"
+          "http://localhost:8000/create/get-pods?is_public=true"
         );
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -98,15 +98,12 @@ function Dashboard() {
   return (
     <div>
       <div className="dashboard">
-        <div className="menu-bar">
+        <div className="menu-bar" style={{ color: "black" }}>
           <div></div>
           <div className="menu-right">
             <FaPlus className="menu-item" onClick={handleOpen} />
             <FaBell className="menu-item" onClick={handlePopupClick} />
-            <FaUser
-              className="menu-item"
-              onClick={handleProfileOpen} // Open profile popup
-            />
+            <FaUser className="menu-item" onClick={handleProfileOpen} />
           </div>
         </div>
         <PodConfirm

@@ -42,10 +42,7 @@ function ExCard({ pod }) {
       <div className="card-container">
         <h3>{pod.pod_name}</h3>
         <p className="description">{pod.pod_description}</p>
-        <button
-          style={{ backgroundColor: "#508C9B" }}
-          onClick={() => handleOpenPopup(pod)}
-        >
+        <button className="exbtn" onClick={() => handleOpenPopup(pod)}>
           Join
         </button>
       </div>

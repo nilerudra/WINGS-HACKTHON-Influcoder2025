@@ -2,7 +2,7 @@
   width: 90%;
   max-width: 1200px;
   margin: 0 auto;
-  color: white;
+  color: black;
 }
 
 /* Header */
@@ -11,15 +11,23 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px 0;
+  flex-wrap: wrap;
+  color: black;
 }
 
 .header h1 {
   font-size: 24px;
   font-weight: bold;
+  color: #ee7214;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 nav a {
-  margin: 0 15px;
   text-decoration: none;
   color: #333;
   font-size: 16px;
@@ -27,15 +35,18 @@ nav a {
 
 .signup-button {
   padding: 10px 20px;
-  background-color: white;
-  color: black;
+  background-color: black;
+  color: white;
   border: none;
   cursor: pointer;
   border-radius: 5px;
+  transition: 0.3s;
 }
 
 .signup-button:hover {
   background-color: whitesmoke;
+  color: black;
+  border: 2px solid black;
 }
 
 /* Hero Section */
@@ -44,10 +55,14 @@ nav a {
   align-items: center;
   justify-content: space-between;
   padding: 50px 0;
+  flex-wrap: wrap;
+  text-align: center;
 }
 
 .hero-text {
   max-width: 50%;
+  flex: 1;
+  min-width: 300px;
 }
 
 .hero-text h2 {
@@ -58,25 +73,34 @@ nav a {
 .hero-text p {
   font-size: 18px;
   margin-bottom: 20px;
-  color: whitesmoke;
+  color: black;
 }
 
 .get-started {
   padding: 12px 24px;
-  border: 3px solid white;
-  color: #fff;
+  border: 3px solid #527853;
+  color: black;
   background-color: transparent;
   cursor: pointer;
   border-radius: 5px;
+  transition: 0.3s;
 }
 
 .get-started:hover {
-  background-color: white;
-  color: #333;
+  background-color: #527853;
+  color: white;
 }
 
 .hero-image {
   max-width: 45%;
+  flex: 1;
+  min-width: 300px;
+  text-align: center;
+}
+
+.hero-image img {
+  width: 100%;
+  max-width: 400px;
 }
 
 /* Features Section */
@@ -93,6 +117,7 @@ nav a {
 .features-grid {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 20px;
 }
 
@@ -122,31 +147,7 @@ nav a {
   color: #555;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .hero {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .hero-text {
-    max-width: 100%;
-  }
-
-  .hero-image {
-    max-width: 80%;
-    margin-top: 20px;
-  }
-
-  .features-grid {
-    flex-wrap: wrap;
-  }
-
-  .feature-card {
-    width: 100%;
-    max-width: 300px;
-  }
-}
+/* About Section */
 .about-section {
   background: #f8f9fa;
   padding: 60px 20px;
@@ -199,10 +200,11 @@ nav a {
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Footer */
 .footer {
   margin: 40px 0px;
-  border: 1px solid white;
-  color: white;
+  border: 1px solid black;
+  color: black;
   padding: 40px 20px;
   text-align: center;
 }
@@ -214,22 +216,58 @@ nav a {
   max-width: 1200px;
   margin: 0 auto;
   padding-bottom: 20px;
-  border-bottom: 1px solid whitesmoke;
+  border-bottom: 1px solid gray;
 }
 
 .footer-logo h2 {
   font-size: 24px;
   margin-bottom: 10px;
-  color: white;
+  color: black;
 }
 
 .footer-logo p {
   font-size: 14px;
-  color: whitesmoke;
+  color: gray;
 }
 
 .footer-bottom {
   margin-top: 20px;
   font-size: 14px;
-  color: whitesmoke;
+  color: gray;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  nav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-text {
+    max-width: 100%;
+  }
+
+  .hero-image {
+    max-width: 80%;
+    margin-top: 20px;
+  }
+
+  .features-grid {
+    flex-wrap: wrap;
+  }
+
+  .feature-card {
+    width: 100%;
+    max-width: 300px;
+  }
 }
