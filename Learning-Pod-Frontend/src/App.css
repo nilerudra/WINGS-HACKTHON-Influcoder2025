@@ -1,0 +1,30 @@
+.App {
+  display: flex;
+  background-color: white;
+}
+
+.with-slider .content {
+  margin-left: 60px; /* Adjust based on the Slider's width */
+  width: calc(100% - 60px);
+}
+
+.without-slider .content {
+  margin-left: 0;
+  width: 100%;
+}
+
+.slider {
+  width: 60px;
+}
+.app-container {
+  display: flex;
+}
+
+.slider {
+  width: 250px; /* Adjust based on your design */
+}
+
+.content {
+  flex-grow: 1;
+  padding-left: 20px; /* Adjust to give space for the slider */
+}

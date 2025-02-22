@@ -1,0 +1,173 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Poppins:wght@300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #2d3e54;
+}
+
+.signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.form-container {
+  background-color: #3c4b63;
+  border-radius: 10px;
+  color: #eae6e2;
+  width: 100%;
+  max-width: 500px;
+  padding: 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.input-group {
+  margin-bottom: 1.5rem;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 6px;
+  border: 1px solid rgba(55, 65, 81, 1);
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #eae6e2;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.input-group input::placeholder {
+  color: #bfd0dc;
+}
+
+.input-group input:focus {
+  border-color: #bfd0dc;
+}
+
+.date-role {
+  display: flex;
+  gap: 1rem;
+}
+
+.bday,
+.role {
+  width: 50%;
+}
+.role {
+  width: 50%;
+  height: 50px;
+  align-self: last baseline;
+  border-radius: 6px;
+  border: 1px solid rgba(55, 65, 81, 1);
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #eae6e2;
+}
+.sign-up {
+  width: 100%;
+  background-color: #bfd0dc;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #2d3e54;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.sign-up:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.sign-up:hover:not(:disabled) {
+  background-color: #cce2e9;
+  transform: translateY(-2px);
+}
+
+.social-messages {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+.line {
+  flex: 1;
+  height: 2px;
+  background-color: rgba(55, 65, 81, 1);
+}
+
+.message {
+  margin: 0 1rem;
+  font-size: 1rem;
+  color: rgba(156, 163, 175, 1);
+}
+
+.icons {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.icons i {
+  font-size: 2rem;
+  color: #bfd0dc;
+  transition: color 0.3s ease;
+}
+
+.icons i:hover {
+  color: #cce2e9;
+  cursor: pointer;
+}
+
+.log-in {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: rgba(156, 163, 175, 1);
+}
+
+.log-in a {
+  color: rgba(243, 244, 246, 1);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.log-in a:hover {
+  color: #bfd0dc;
+  text-decoration: underline;
+}
+
+@media (max-width: 420px) {
+  .form-container {
+    width: 100%;
+    padding: 1.5rem;
+  }
+
+  .date-role {
+    flex-direction: column;
+  }
+
+  .bday,
+  .role {
+    width: 100%;
+  }
+}
