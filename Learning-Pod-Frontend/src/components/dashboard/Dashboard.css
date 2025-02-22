@@ -67,7 +67,6 @@
 
 .menu-item {
   color: #333;
-  background: red;
   margin: 0 15px;
   text-decoration: none;
   font-size: 18px;
@@ -206,7 +205,6 @@
   }
 
   .menu-bar {
-    background: #bb7d7d;
     padding: 15px;
   }
 

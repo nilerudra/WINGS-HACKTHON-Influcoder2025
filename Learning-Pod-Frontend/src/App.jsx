@@ -36,7 +36,6 @@ const AppContent = () => {
           <Route path="/whiteboard" element={<WhiteBoard />} />
           <Route path="/pod" element={<Pod />} />
           <Route path="/folder/:folderName" element={<FolderResources />} />
-
           <Route path="/submission" element={<TaskSubmission />} />
           <Route path="/resource" element={<ResourcePage />} />
           <Route path="/task-creation" element={<TaskCreation />} />

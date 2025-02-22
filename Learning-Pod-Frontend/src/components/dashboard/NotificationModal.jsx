@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -9,6 +9,7 @@ import {
   ListItem,
   ListItemText,
   Button,
+  Alert,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import axios from "axios";
@@ -20,21 +21,46 @@ const NotificationModal = ({ open, onClose }) => {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    const userId = localStorage.getItem("user_id");
+    if (!open) return;
 
     const fetchNotifications = async () => {
+      const userId = localStorage.getItem("user_id");
+      if (!userId) {
+        setError("User ID is missing.");
+        return;
+      }
+
       try {
-        const response = await axios.get(
-          `http://localhost:8000/notification/user/${userId}`
-        );
-        setNotifications(response.data);
-      } catch (err) {
-        setError(err.response?.data?.message || "Error fetching notifications");
+        const [adminResponse, userResponse] = await Promise.allSettled([
+          axios.get(`http://localhost:8000/notification/admin/${userId}`),
+          axios.get(`http://localhost:8000/notification/user/${userId}`),
+        ]);
+
+        let adminNotifications = [];
+        let userNotifications = [];
+
+        if (adminResponse.status === "fulfilled") {
+          adminNotifications = adminResponse.value.data;
+        }
+
+        if (userResponse.status === "fulfilled") {
+          userNotifications = userResponse.value.data;
+        }
+
+        const mergedNotifications = [
+          ...adminNotifications,
+          ...userNotifications,
+        ];
+
+        setNotifications(mergedNotifications);
+        setError("");
+      } catch (error) {
+        setError("Error fetching notifications. Please try again.");
       }
     };
 
     fetchNotifications();
-  }, []);
+  }, [open]);
 
   const handleNotificationClick = (notification) => {
     setSelectedNotification(notification);
@@ -50,12 +76,11 @@ const NotificationModal = ({ open, onClose }) => {
     if (!selectedNotification) return;
 
     try {
-      // Send a POST request to the accept-join endpoint
       await axios.post(`http://localhost:8000/notification/accept-join`, {
         notificationId: selectedNotification._id,
       });
 
-      // Update the local notification list to reflect the acceptance
+      // Update notifications state
       setNotifications((prevNotifications) =>
         prevNotifications.map((notification) =>
           notification._id === selectedNotification._id
@@ -64,10 +89,8 @@ const NotificationModal = ({ open, onClose }) => {
         )
       );
 
-      // Close the detail modal after accepting
-      handleDetailClose();
+      handleDetailClose(); // Auto-close detail modal after acceptance
     } catch (err) {
-      console.error("Error accepting the request:", err);
       setError("Error accepting the request. Please try again.");
     }
   };
@@ -105,25 +128,35 @@ const NotificationModal = ({ open, onClose }) => {
             </Typography>
             <Divider />
           </div>
+
+          {/* Display error if any */}
+          {error && <Alert severity="error">{error}</Alert>}
+
           <div
             style={{ maxHeight: "400px", overflowY: "auto", padding: "0 6px" }}
           >
             <List>
-              {notifications.map((notification, index) => (
-                <ListItem
-                  button
-                  key={index}
-                  onClick={() => handleNotificationClick(notification)}
-                  style={{ cursor: "pointer" }}
-                >
-                  <ListItemText
-                    primary={notification.message}
-                    secondary={new Date(
-                      notification.created_at
-                    ).toLocaleString()}
-                  />
-                </ListItem>
-              ))}
+              {notifications.length > 0 ? (
+                notifications.map((notification, index) => (
+                  <ListItem
+                    button
+                    key={index}
+                    onClick={() => handleNotificationClick(notification)}
+                    style={{ cursor: "pointer" }}
+                  >
+                    <ListItemText
+                      primary={notification.message}
+                      secondary={new Date(
+                        notification.created_at
+                      ).toLocaleString()}
+                    />
+                  </ListItem>
+                ))
+              ) : (
+                <Typography style={{ padding: "16px", textAlign: "center" }}>
+                  No notifications found.
+                </Typography>
+              )}
             </List>
           </div>
         </DialogContent>
@@ -165,7 +198,6 @@ const NotificationModal = ({ open, onClose }) => {
               {new Date(selectedNotification.created_at).toLocaleString()}
             </Typography>
 
-            {/* Display Accept button only if the request is pending */}
             {!selectedNotification.isAccepted && (
               <Button
                 variant="contained"

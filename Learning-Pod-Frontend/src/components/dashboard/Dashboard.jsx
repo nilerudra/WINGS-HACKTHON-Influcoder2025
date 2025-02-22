@@ -10,6 +10,7 @@ import axios from "axios";
 import ExCard from "./ExCard";
 import NotificationModal from "./NotificationModal";
 import ProfilePopup from "./ProfilePopup";
+import { domain } from "../../utils/domain";
 
 function Dashboard() {
   const [open, setOpen] = useState(false);
@@ -65,7 +66,7 @@ function Dashboard() {
     const fetchPods = async () => {
       try {
         const response = await fetch(
-          "http://localhost:8000/create/get-pods?is_public=true"
+          `${domain}/create/get-pods?is_public=true`
         );
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -101,9 +102,22 @@ function Dashboard() {
         <div className="menu-bar" style={{ color: "black" }}>
           <div></div>
           <div className="menu-right">
-            <FaPlus className="menu-item" onClick={handleOpen} />
-            <FaBell className="menu-item" onClick={handlePopupClick} />
-            <FaUser className="menu-item" onClick={handleProfileOpen} />
+            <FaPlus
+              className="menu-item"
+              style={{ color: "black", fontSize: "40px" }}
+              onClick={handleOpen}
+            />
+
+            <FaBell
+              className="menu-item"
+              style={{ color: "black", fontSize: "40px" }}
+              onClick={handlePopupClick}
+            />
+            <FaUser
+              className="menu-item"
+              style={{ color: "black", fontSize: "40px" }}
+              onClick={handleProfileOpen}
+            />
           </div>
         </div>
         <PodConfirm
