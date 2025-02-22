@@ -42,7 +42,7 @@ export default function SignUp() {
           setLoading(false);
           console.log("Response:", responseData);
           alert("User registered successfully");
-          navigate("/");
+          navigate("/login");
         },
         "post",
         {

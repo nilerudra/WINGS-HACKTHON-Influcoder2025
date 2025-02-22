@@ -14,10 +14,11 @@ import ResourceList from "./components/resource/ResourceList";
 import ResourcePage from "./components/resource/ResourcePage";
 import FolderResources from "./components/resource/FolderResources";
 import TaskCreation from "./components/submissions/TaskCreation";
+import LandingPage from "./components/landing-page/LandingPage";
 
 const AppContent = () => {
   const location = useLocation();
-  const hideSliderRoutes = ["/", "/sign-up"]; // Define routes where you want to hide the Slider
+  const hideSliderRoutes = ["/login", "/sign-up", "/"]; // Define routes where you want to hide the Slider
 
   return (
     <div className="app-container">
@@ -25,7 +26,9 @@ const AppContent = () => {
       {/* Conditionally render the Slider */}
       <div className="content">
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<LandingPage />} />
+
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/create-pod" element={<CreatePod />} />
