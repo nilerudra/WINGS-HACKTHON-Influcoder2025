@@ -32,8 +32,12 @@ const NotificationModal = ({ open, onClose }) => {
 
       try {
         const [adminResponse, userResponse] = await Promise.allSettled([
-          axios.get(`http://localhost:8000/notification/admin/${userId}`),
-          axios.get(`http://localhost:8000/notification/user/${userId}`),
+          axios.get(
+            `https://learning-pod-backend.onrender.com/notification/admin/${userId}`
+          ),
+          axios.get(
+            `https://learning-pod-backend.onrender.com/notification/user/${userId}`
+          ),
         ]);
 
         let adminNotifications = [];
@@ -76,9 +80,12 @@ const NotificationModal = ({ open, onClose }) => {
     if (!selectedNotification) return;
 
     try {
-      await axios.post(`http://localhost:8000/notification/accept-join`, {
-        notificationId: selectedNotification._id,
-      });
+      await axios.post(
+        `https://learning-pod-backend.onrender.com/notification/accept-join`,
+        {
+          notificationId: selectedNotification._id,
+        }
+      );
 
       // Update notifications state
       setNotifications((prevNotifications) =>

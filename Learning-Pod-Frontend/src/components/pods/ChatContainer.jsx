@@ -11,7 +11,7 @@ import axios from "axios";
 import { domain } from "../../utils/domain";
 
 // Establish socket connection
-const socket = io("http://localhost:8000");
+const socket = io("https://learning-pod-backend.onrender.com");
 
 export default function ChatContainer({ pod, isOpen }) {
   const [chatInput, setChatInput] = useState("");
@@ -39,7 +39,7 @@ export default function ChatContainer({ pod, isOpen }) {
   const handleSubmission = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8000/tasks/pods/${pod._id}/check-admin/${userId}`
+        `https://learning-pod-backend.onrender.com/tasks/pods/${pod._id}/check-admin/${userId}`
       );
       if (response.data.isAdmin) {
         alert("task");

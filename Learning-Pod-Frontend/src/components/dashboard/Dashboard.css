@@ -3,7 +3,6 @@
   color: black;
   max-width: 1400px;
   position: relative;
-
   border-radius: 30px;
   padding: 30px;
 }
@@ -50,9 +49,7 @@
   align-items: center;
   flex-wrap: wrap;
   padding: 15px 25px;
-
   border-radius: 15px;
-
   margin-bottom: 30px;
 }
 
@@ -60,9 +57,7 @@
   display: inline-block;
   font-weight: 600;
   font-size: 24px;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: #527853;
 }
 
 .menu-item {
@@ -123,53 +118,9 @@
   overflow: hidden;
 }
 
-.card-container2::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: linear-gradient(to right, #527853, #ee7214);
-  transform: scaleX(0);
-  transition: transform 0.4s ease;
-  transform-origin: left;
-}
-
-.card-container2:hover::before {
-  transform: scaleX(1);
-}
-
 .card-container2:hover {
   transform: translateY(-10px);
   box-shadow: 0 20px 40px rgba(82, 120, 83, 0.15);
-}
-
-.card-container2 h3 {
-  font-size: 1.5em;
-  margin-bottom: 15px;
-  color: #1a1a1a;
-  font-weight: 600;
-  position: relative;
-  padding-bottom: 10px;
-}
-
-.card-container2 h3::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 40px;
-  height: 3px;
-  background: #527853;
-  border-radius: 2px;
-}
-
-.card-container2 p {
-  font-size: 1em;
-  color: #666;
-  margin-bottom: 20px;
-  line-height: 1.6;
 }
 
 .card-container2 button {
@@ -182,9 +133,6 @@
   cursor: pointer;
   transition: all 0.3s ease;
   font-weight: 500;
-  width: fit-content;
-  position: relative;
-  overflow: hidden;
 }
 
 .card-container2 button:hover {
@@ -198,23 +146,9 @@
     margin: 20px;
     padding: 20px;
   }
-
   .pods {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 20px;
-  }
-
-  .menu-bar {
-    padding: 15px;
-  }
-
-  .menu-right {
-    justify-content: flex-start;
-    margin-top: 15px;
-  }
-
-  .menu-item {
-    margin: 8px;
   }
 }
 
@@ -222,26 +156,10 @@
   .pods {
     grid-template-columns: 1fr;
   }
-
-  .card-container2 {
-    max-width: 100%;
-    margin: 10px 0;
-  }
-
   .menu-bar {
     flex-direction: column;
     align-items: center;
     text-align: center;
-  }
-
-  .menu-right {
-    justify-content: center;
-    width: 100%;
-    margin-top: 15px;
-  }
-
-  .home {
-    margin-bottom: 15px;
   }
 }
 
@@ -250,22 +168,7 @@
     margin: 10px;
     padding: 15px;
   }
-
-  .greetings {
-    padding: 20px;
-    margin-bottom: 30px;
-  }
-
-  .menu-item {
-    font-size: 16px;
-    margin: 5px;
-  }
-
   .card-container2 {
-    padding: 20px;
-  }
-
-  .card-container2 button {
-    padding: 10px 20px;
+    padding: 15px;
   }
 }

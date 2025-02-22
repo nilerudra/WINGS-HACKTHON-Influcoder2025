@@ -85,7 +85,7 @@ function Dashboard() {
     const fetchUserDetails = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8000/login/user/${userId}`
+          `https://learning-pod-backend.onrender.com/login/user/${userId}`
         );
         setUser(response.data);
       } catch (error) {
