@@ -27,11 +27,11 @@ export default function PodItem({ community, onSelect }) {
     listItemName: {
       fontSize: "1rem",
       fontWeight: "bold",
-      color: "#fff",
+      color: "black",
     },
     listItemDescription: {
       fontSize: ".75rem",
-      color: "#ddd",
+      color: "gray",
       display: "flex",
       alignItems: "center",
     },
@@ -40,7 +40,7 @@ export default function PodItem({ community, onSelect }) {
       marginLeft: "5px",
       fontSize: "16px",
       verticalAlign: "middle",
-      color: "#00c3ff",
+      color: "green",
       transition: "color 0.2s",
     },
     copyAlert: {
@@ -69,11 +69,6 @@ export default function PodItem({ community, onSelect }) {
   return (
     <>
       <div className="list-item" onClick={onSelect} style={styles.listItem}>
-        <img
-          src={community.profileImage}
-          alt="Pod Profile"
-          style={styles.profileImage}
-        />
         <div className="list-item-text" style={styles.listItemText}>
           <span className="list-item-name" style={styles.listItemName}>
             {community.pod_name}

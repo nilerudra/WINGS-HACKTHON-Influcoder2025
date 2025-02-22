@@ -18,12 +18,13 @@ export default function PodList({ onSelectPod }) {
   const styles = {
     listContainer: {
       padding: "20px",
-      background: "#2d3e54",
+      background: "whitesmoke",
       textAlign: "left",
       minWidth: "0",
       paddingLeft: "30px",
       display: "flex",
       flexDirection: "column",
+      color: "black",
       boxShadow:
         "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
       // backdropFilter: "blur(10px)",
@@ -32,7 +33,7 @@ export default function PodList({ onSelectPod }) {
       marginBottom: "15px",
       fontSize: "1.4rem",
       fontWeight: "500",
-      color: "white",
+      color: "black",
     },
     inputContainer: {
       position: "relative",
@@ -57,7 +58,7 @@ export default function PodList({ onSelectPod }) {
     noPodsMessage: {
       textAlign: "center",
       fontSize: "1rem",
-      color: "#ccc",
+      color: "black",
     },
   };
 

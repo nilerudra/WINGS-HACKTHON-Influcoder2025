@@ -11,7 +11,7 @@ import axios from "axios";
 import { domain } from "../../utils/domain";
 
 // Establish socket connection
-const socket = io("https://hackothsava-server.onrender.com");
+const socket = io("http://localhost:8000");
 
 export default function ChatContainer({ pod, isOpen }) {
   const [chatInput, setChatInput] = useState("");

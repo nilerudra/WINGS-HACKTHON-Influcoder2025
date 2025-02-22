@@ -17,7 +17,7 @@
 
 /* Button styles */
 .upload-button {
-  background-color: #2d3e54;
+  background-color: #527853;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -33,7 +33,7 @@
 
 /* Button hover state */
 .upload-button:hover {
-  background-color: #37495f;
+  background-color: #356437;
 }
 
 /* Button disabled state */
